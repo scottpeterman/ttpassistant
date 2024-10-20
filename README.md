@@ -11,7 +11,10 @@ Visual TTP Assistant addresses key challenges in network automation and manageme
 - **Dynamic Code Generation**: Automatically generates Python scripts based on user inputs and templates.
 - **Real-time Code Execution**: Provides an integrated development environment with Ace editor and an OS console where users can modify and run generated code.
 
-![App Screenshot](https://github.com/scottpeterman/ttpassistant/raw/main/screenshots/app.png)
+### Alpha
+- **Ver 0.1.0** This code base is just getting started. Many things work, but need features, sometimes it breaks. Use with caution if you decide to try it out. 
+
+- ![App Screenshot](https://github.com/scottpeterman/ttpassistant/raw/main/screenshots/app.png)
 
 ## Key Features
 
@@ -20,10 +23,15 @@ Visual TTP Assistant addresses key challenges in network automation and manageme
 - **Dynamic TTP Template Generation**: Easily create TTP templates to extract key details from unstructured network data.
 - **Real-Time JSON Results**: View the parsed JSON results instantly after applying a template.
 
+- ![App Screenshot](https://github.com/scottpeterman/ttpassistant/raw/main/screenshots/functions.png)
+- ![App Screenshot](https://github.com/scottpeterman/ttpassistant/raw/main/screenshots/filters.png)
+
+
 ### 2. **SSH Command Execution**
 - **Run Commands on Devices**: Execute SSH commands directly on network devices from within the tool. This is integrated with TTP, allowing you to process the live data using templates.
 - **Command History**: Auto-populates command fields with previous inputs, saving time for repeated tasks.
 - **Asynchronous Execution**: A separate SSH thread ensures that long-running commands don't block the UI.
+
 
 ### 3. **Dynamic Code Generation and Execution**
 - **Code Generation**: Automatically generate Python code based on user input, SSH commands, and templates.
@@ -35,6 +43,7 @@ Visual TTP Assistant addresses key challenges in network automation and manageme
 - **Ace-based Editor**: Edit your Python scripts or other code in the Ace editor, with features like syntax highlighting, autocompletion, and keyboard shortcuts.
 - **OS Console**: Directly execute the scripts written in the Ace editor. It supports Python, batch, and PowerShell commands.
 - **Save and Load Files**: The built-in file menu allows users to save and open scripts, making it easy to resume work later.
+- ![App Screenshot](https://github.com/scottpeterman/ttpassistant/raw/main/screenshots/gencode.png)
 
 ## Workflow
 
