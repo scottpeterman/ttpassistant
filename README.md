@@ -1,4 +1,3 @@
----
 
 # Visual TTP Assistant
 
