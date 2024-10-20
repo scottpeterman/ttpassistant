@@ -1,0 +1,379 @@
+from PyQt6 import QtCore, QtWidgets
+from PyQt6.QtCore import QEvent
+from PyQt6.QtWidgets import QStyleFactory
+from ttp_assistant.helpers.parser_examples import p_examples
+from ttp import ttp
+from snparsertools import SyntaxHighlighter
+from ttp_assistant.helpers.helper import PlainTextOnlyTextEdit, render_event, clear, notify
+from snparsertools import HighlightedTextEdit
+from source_var_edit import VariableTextEdit
+
+
+class UglyParsingWidget(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super(UglyParsingWidget, self).__init__(parent)
+        self.setupUi()
+
+    def setupUi(self):
+        self.mode = "Mode"
+        self.previous_mode = "TTP"
+        self.resize(1000, 600)
+        self.setObjectName("parsers")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self)
+        self.splitter = QtWidgets.QSplitter(self)
+        self.splitter.setOrientation(QtCore.Qt.Orientation.Horizontal)
+        self.verticalLayout_5.addWidget(self.splitter)
+
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.splitter)
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+
+        self.label = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+
+        # Initialize teSource with PlainTextOnlyTextEdit; will replace in modeComboBoxChanged if needed
+        # self.teSource = PlainTextOnlyTextEdit(self.verticalLayoutWidget)
+        self.teSource = VariableTextEdit(self)
+
+        self.teSource.setObjectName("teSource")
+        self.verticalLayout.addWidget(self.teSource)
+
+        self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout.addWidget(self.label_2)
+
+        self.teTemplate = PlainTextOnlyTextEdit(self.verticalLayoutWidget)
+        self.teTemplate.setObjectName("teTemplate")
+        self.verticalLayout.addWidget(self.teTemplate)
+
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.pbRender = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pbRender.setObjectName("pbRender")
+        self.pbRender.setStyleSheet("background-color: #006400; color: white;")
+        self.pbRender.clicked.connect(lambda: render_event(self, self.mode))
+
+        self.horizontalLayout.addWidget(self.pbRender)
+
+        self.pbClear = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pbClear.setObjectName("pbClear")
+        self.pbClear.setStyleSheet("background-color: #8B6508; color: white;")
+        self.pbClear.clicked.connect(lambda: clear(self))
+        self.horizontalLayout.addWidget(self.pbClear)
+
+        self.pbExample = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pbExample.clicked.connect(lambda: self.loadExample(self.mode))
+        self.pbExample.setObjectName("pbExample")
+        self.horizontalLayout.addWidget(self.pbExample)
+
+        self.modeComboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
+        self.modeComboBox.setObjectName("comboBox")
+        self.modeComboBox.addItem("Mode")
+        self.modeComboBox.addItem("TTP")
+        self.modeComboBox.addItem("Jinja2")
+        self.modeComboBox.addItem("JMesPath")
+        # self.modeComboBox.addItem("TTP Assisted")  # Added TTP Assisted mode
+        self.modeComboBox.currentIndexChanged.connect(self.modeComboBoxChanged)
+        self.horizontalLayout.addWidget(self.modeComboBox)
+
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.addLayout(self.horizontalLayout_2)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.splitter)
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+
+        self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_4.addWidget(self.label_3)
+
+        self.teResult = QtWidgets.QTextEdit(self.verticalLayoutWidget_2)
+        self.teResult.setObjectName("teResult")
+        self.verticalLayout_4.addWidget(self.teResult)
+
+        # self.highlighterComboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
+        # self.highlighterComboBox.setObjectName("highlighterComboBox")
+        # self.highlighterComboBox.addItem("No Highlighter")
+        # self.highlighterComboBox.addItem("JSON Highlighter")
+        # self.highlighterComboBox.addItem("Cisco Highlighter")
+        # self.highlighterComboBox.addItem("Ansible Highlighter")
+        # self.highlighterComboBox.currentIndexChanged.connect(self.highlighterComboBoxChanged)
+        # self.highlighterComboBox.setVisible(False)
+        # self.verticalLayout_4.addWidget(self.highlighterComboBox)
+
+        self.modeComboBox.setCurrentIndex(0)
+        self.source_highlighter = SyntaxHighlighter(self.teSource.document())
+        self.template_highlighter = SyntaxHighlighter(self.teTemplate.document())
+        self.result_highlighter = SyntaxHighlighter(self.teResult.document())
+
+        self.modeComboBox.currentIndexChanged.connect(self.modeComboBoxChanged)
+        QtCore.QMetaObject.connectSlotsByName(self)
+
+        _translate = QtCore.QCoreApplication.translate
+        self.label.setText(_translate("parsers", "Source"))
+        self.label_2.setText(_translate("parsers", "Template"))
+        self.pbRender.setText(_translate("parsers", "Render"))
+        self.pbClear.setText(_translate("parsers", "Clear"))
+        self.pbExample.setText(_translate("parsers", "Example"))
+        self.modeComboBox.setItemText(0, _translate("parsers", "Mode"))
+        self.modeComboBox.setItemText(1, _translate("parsers", "TTP"))
+        self.modeComboBox.setItemText(2, _translate("parsers", "Jinja2"))
+        self.modeComboBox.setItemText(3, _translate("parsers", "JMesPath"))
+        # self.modeComboBox.setItemText(4, _translate("parsers", "TTP Assisted"))
+        self.label_3.setText(_translate("parsers", "Result"))
+        self.teSource.installEventFilter(self)
+
+    def eventFilter(self, obj, event):
+        # Check if the event is a mouse move and if it relates to teSource
+        if obj == self.teSource and event.type() == QEvent.Type.MouseMove:
+            print("MouseMoveEvent in teSource detected from parent filter")
+            self.teSource.mouseMoveEvent(event)  # Forward the event to VariableTextEdit
+            return True  # Indicate that we handled the event
+        return super().eventFilter(obj, event)
+
+    # def highlighterComboBoxChanged(self, index):
+    #     # Remove any existing highlighter
+    #     if hasattr(self, "highlighter"):
+    #         self.highlighter.setDocument(None)
+    #         del self.highlighter
+
+        # Add the selected highlighter
+        self.highlighter = SyntaxHighlighter(self.teResult.document())
+        if index == 1:  # JSON Highlighter
+            self.highlighter.set_syntax_type("json")
+        elif index == 2:  # Cisco Highlighter
+            self.highlighter.set_syntax_type("keyword")
+            self.highlighter.load_keywords_from_file("./keywords/cisco_keywords.txt")
+        elif index == 3:  # Ansible Highlighter
+            self.highlighter.set_syntax_type("keyword")
+            self.highlighter.load_keywords_from_file("./keywords/ansible_keywords.txt")
+
+    def modeComboBoxChanged(self, index):
+        # Store current content before mode change
+        current_source_text = self.teSource.toPlainText()
+        current_template_text = self.teTemplate.toPlainText()
+        current_result_text = self.teResult.toPlainText()
+
+        # Get previous and new modes
+        previous_mode = self.mode
+        self.mode = self.modeComboBox.currentText()
+
+        # Disconnect existing signals to prevent crashes
+        try:
+            self.teSource.textChanged.disconnect()
+            self.teTemplate.textChanged.disconnect()
+        except TypeError:
+            pass
+
+        if hasattr(self.teSource, 'selection_changed'):
+            try:
+                self.teSource.selection_changed.disconnect()
+            except TypeError:
+                pass
+
+        # Store highlighted ranges if switching from TTP Assisted
+        highlighted_ranges = []
+        if previous_mode == "TTP Assisted" and hasattr(self.teSource, 'highlighted_ranges'):
+            highlighted_ranges = self.teSource.highlighted_ranges.copy()
+
+        # Remove the old teSource widget (switching between PlainTextOnlyTextEdit and HighlightedTextEdit)
+        self.verticalLayout.removeWidget(self.teSource)
+
+        # Switch to the appropriate teSource based on the selected mode
+        if self.mode == "TTP Assisted":
+            self.teSource = HighlightedTextEdit(self.verticalLayoutWidget)
+            # Restore highlighted ranges if switching back to TTP Assisted
+            if highlighted_ranges:
+                self.teSource.highlighted_ranges = highlighted_ranges
+                self.teSource.update_highlights()
+            else:
+                # Initialize some default highlighted ranges if none exist
+                self.teSource.highlighted_ranges = [{'start': 0, 'end': 4, 'var_name': 'default_var'}]
+                self.teSource.update_highlights()
+
+            # Connect specific signals for TTP Assisted mode
+            self.teSource.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.CustomContextMenu)
+            self.teSource.customContextMenuRequested.connect(self.teSource.show_context_menu)
+            self.teSource.selection_changed.connect(self.update_ttp_assisted_template)
+            self.teSource.textChanged.connect(self.on_text_changed)
+
+            # Adjust UI for TTP Assisted mode
+            self.teTemplate.setReadOnly(True)
+            self.pbRender.setEnabled(False)
+            self.pbRender.setVisible(False)
+            # self.highlighterComboBox.setVisible(False)
+
+            # Install the event filter to handle mouse move events
+            self.teSource.installEventFilter(self)
+        else:
+            # Switch to PlainTextOnlyTextEdit for other modes
+            self.teSource = PlainTextOnlyTextEdit(self.verticalLayoutWidget)
+
+            # Make the template editable again
+            self.teTemplate.setReadOnly(False)
+            self.pbRender.setEnabled(True)
+            self.pbRender.setVisible(True)
+            # self.highlighterComboBox.setVisible(True)
+
+            # Remove event filter for non-TTP Assisted modes
+            self.teSource.removeEventFilter(self)
+
+        # Restore the content after switching the widget
+        self.teSource.setPlainText(current_source_text)
+        self.teTemplate.setPlainText(current_template_text)
+        self.teResult.setPlainText(current_result_text)
+
+        # Insert the new teSource widget into the layout
+        self.verticalLayout.insertWidget(1, self.teSource)
+
+        # Reinitialize and reassign highlighters after the widget replacement
+        self.reassign_highlighters()
+
+        # If switching to TTP Assisted, update the template based on current source content
+        if self.mode == "TTP Assisted" and current_source_text.strip():
+            self.update_ttp_assisted_template()
+
+    def reassign_highlighters(self):
+        """Reinitialize and reassign highlighters to the current widgets"""
+        # Create new highlighter instances and attach them to the current QTextDocument
+        self.source_highlighter = SyntaxHighlighter(self.teSource.document())
+        self.template_highlighter = SyntaxHighlighter(self.teTemplate.document())
+        self.result_highlighter = SyntaxHighlighter(self.teResult.document())
+
+        # Update syntax highlighting based on the current mode
+        self.update_syntax_highlighting()
+
+    def update_syntax_highlighting(self):
+        """Update syntax highlighting based on current mode"""
+        if self.mode == "TTP":
+            self.source_highlighter.set_syntax_type("jinja")
+            self.template_highlighter.set_syntax_type("jinja")
+            self.result_highlighter.set_syntax_type("json")
+        elif self.mode == "Jinja2":
+            self.source_highlighter.set_syntax_type("yaml")
+            self.template_highlighter.set_syntax_type("jinja")
+            self.result_highlighter.set_syntax_type("json")
+        elif self.mode == "JMesPath":
+            self.source_highlighter.set_syntax_type("json")
+            self.template_highlighter.set_syntax_type("json")
+            self.result_highlighter.set_syntax_type("json")
+        elif self.mode == "TTP Assisted":
+            self.source_highlighter.set_syntax_type("plain")
+            self.template_highlighter.set_syntax_type("jinja")
+            self.result_highlighter.set_syntax_type("json")
+
+    def loadExample(self, mode):
+        if mode != "Mode":
+            if mode != "TTP Assisted":
+                self.teTemplate.setText(p_examples[mode]['teTemplate'])
+                self.teSource.setText(p_examples[mode]['teSource'])
+            else:
+                # self.teTemplate.clear()
+                self.teSource.setText(p_examples['TTP']['teSource'])
+        else:
+            notify(self, "Select Mode", "Please select a mode first ... TTP, Jinja etc")
+
+
+
+    # Methods for TTP Assisted mode
+    def on_text_changed(self):
+        # Clear highlights and variables when text changes
+        if hasattr(self.teSource, 'clear_highlights'):
+            self.teSource.clear_highlights()
+            self.teTemplate.clear()
+            self.teResult.clear()
+
+    def update_ttp_assisted_template(self):
+        template_text = self.generate_ttp_assisted_template()
+        self.teTemplate.setPlainText(template_text)
+        self.update_ttp_assisted()
+
+    def generate_ttp_assisted_template(self):
+        sample_text = self.teSource.toPlainText()
+        lines = sample_text.splitlines(keepends=True)
+        line_positions = []
+        current_pos = 0
+        for line in lines:
+            line_length = len(line)
+            line_start = current_pos
+            line_end = current_pos + line_length
+            line_positions.append({'index': len(line_positions), 'start': line_start, 'end': line_end, 'text': line})
+            current_pos += line_length
+
+        line_variables = {}
+        for rng in self.teSource.highlighted_ranges:
+            for line_info in line_positions:
+                line_start = line_info['start']
+                line_end = line_info['end']
+                if rng['start'] >= line_start and rng['end'] <= line_end:
+                    idx = line_info['index']
+                    if idx not in line_variables:
+                        line_variables[idx] = []
+                    line_variables[idx].append(rng)
+                    break
+
+        template_lines = []
+        for line_info in line_positions:
+            idx = line_info['index']
+            line_text = line_info['text']
+            if idx in line_variables:
+                vars_in_line = line_variables[idx]
+                vars_in_line.sort(key=lambda x: x['start'])
+                line_start = line_info['start']
+                new_line = ''
+                last_pos = line_start
+                for var in vars_in_line:
+                    var_start = var['start']
+                    var_end = var['end']
+                    rel_start = var_start - line_start
+                    rel_end = var_end - line_start
+
+                    new_line += line_text[last_pos - line_start:rel_start]
+
+                    if var['match_type']:
+                        var_string = f"{{{{ {var['var_name']} | {var['match_type']} }}}}"
+                    else:
+                        var_string = f"{{{{ {var['var_name']} }}}}"
+
+                    new_line += var_string
+                    last_pos = var_end
+
+                new_line += line_text[last_pos - line_start:]
+                template_lines.append(new_line)
+            else:
+                # Include lines without variables if needed
+                # template_lines.append(line_text)
+                pass  # Skip lines without variables
+
+        return ''.join(template_lines)
+
+    def update_ttp_assisted(self):
+        data_to_parse = self.teSource.toPlainText()
+        ttp_template = self.teTemplate.toPlainText()
+
+        if not data_to_parse.strip() or not ttp_template.strip():
+            self.teResult.clear()
+            return
+
+        try:
+            parser = ttp(data=data_to_parse, template=ttp_template)
+            parser.parse()
+            result = parser.result(format='json')[0]
+            self.teResult.setPlainText(result)
+        except Exception as e:
+            self.teResult.setPlainText(f"Error Parsing Via TTP Assisted: {e}")
+
+
+if __name__ == "__main__":
+    import sys
+
+    app = QtWidgets.QApplication(sys.argv)
+    app.setStyle(QStyleFactory.create("Fusion"))
+
+    MainWindow = QtWidgets.QMainWindow()
+    ui = UglyParsingWidget()
+    # ui.setGeometry(800,100,800,100)
+    MainWindow.setCentralWidget(ui)  # Set the widget as the central widget
+    MainWindow.show()
+    sys.exit(app.exec())

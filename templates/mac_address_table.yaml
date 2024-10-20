@@ -1,0 +1,65 @@
+description: Mac address table IOSv L2
+result:
+- - interface: Gi0/1
+    learning_type: DYNAMIC
+    mac_address: 0c4f.6392.0001
+    vlan_id: '1'
+  - interface: Gi0/1
+    learning_type: DYNAMIC
+    mac_address: 0c4f.6392.8001
+    vlan_id: '1'
+  - interface: Gi0/1
+    learning_type: DYNAMIC
+    mac_address: 0c59.b769.0000
+    vlan_id: '1'
+  - interface: Gi0/1
+    learning_type: DYNAMIC
+    mac_address: 0c59.b769.8001
+    vlan_id: '1'
+  - interface: Gi0/1
+    learning_type: DYNAMIC
+    mac_address: 0cab.0018.0003
+    vlan_id: '10'
+  - interface: Gi0/0
+    learning_type: DYNAMIC
+    mac_address: ca01.8e69.0038
+    vlan_id: '1'
+source_text: |-
+  usa1-core-01#show mac address-table
+            Mac Address Table
+  -------------------------------------------
+
+  Vlan    Mac Address       Type        Ports
+  ----    -----------       --------    -----
+     1    0c4f.6392.0001    DYNAMIC     Gi0/1
+     1    0c4f.6392.8001    DYNAMIC     Gi0/1
+     1    0c59.b769.0000    DYNAMIC     Gi0/1
+     1    0c59.b769.8001    DYNAMIC     Gi0/1
+     10    0cab.0018.0003    DYNAMIC     Gi0/1
+     1    ca01.8e69.0038    DYNAMIC     Gi0/0
+  Total Mac Addresses for this criterion: 6
+  usa1-core-01#
+template: |2
+     {{ vlan_id | isdigit() }}    {{ mac_address }}    {{ learning_type }}     {{ interface }}
+variables:
+- end: 201
+  filters: []
+  functions:
+  - isdigit()
+  start: 200
+  var_name: vlan_id
+- end: 219
+  filters: []
+  functions: []
+  start: 205
+  var_name: mac_address
+- end: 240
+  filters: []
+  functions: []
+  start: 235
+  var_name: interface
+- end: 230
+  filters: []
+  functions: []
+  start: 223
+  var_name: learning_type

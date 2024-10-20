@@ -1,0 +1,82 @@
+description: cdp neigh details from IOS
+result:
+- - capabilities: Router Switch IGMP
+    device_id: usa1-core-02.home.com
+    device_ip: 172.16.101.2
+    local_interface: GigabitEthernet0/1
+    platform: Cisco
+    remote_interface: GigabitEthernet0/1
+  - capabilities: Router Switch IGMP
+    device_id: usa1-access-02.home.com
+    device_ip: 172.16.101.4
+    local_interface: GigabitEthernet0/3
+    platform: Cisco
+    remote_interface: GigabitEthernet0/2
+  - device_id: usa1-rtr-1.home.com
+    device_ip: 172.16.101.100
+    local_interface: GigabitEthernet0/0
+    remote_interface: Ethernet2/0
+source_text: "\nusa1-core-01#show cdp neigh detail\n-------------------------\nDevice\
+  \ ID: usa1-core-02.home.com\nEntry address(es): \n  IP address: 172.16.101.2\nPlatform:\
+  \ Cisco ,  Capabilities: Router Switch IGMP \nInterface: GigabitEthernet0/1,  Port\
+  \ ID (outgoing port): GigabitEthernet0/1\nHoldtime : 166 sec\n\nVersion :\nCisco\
+  \ IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Version 15.2(4.0.55)E,\
+  \ TEST ENGINEERING ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP\nTechnical Support:\
+  \ http://www.cisco.com/techsupport\nCopyright (c) 1986-2015 by Cisco Systems, Inc.\n\
+  Compiled Tue 28-Jul-15 18:52 by sasyamal\n\nadvertisement version: 2\nVTP Management\
+  \ Domain: ''\nNative VLAN: 1\nDuplex: half\nManagement address(es): \n  IP address:\
+  \ 172.16.101.2\n\n-------------------------\nDevice ID: usa1-access-02.home.com\n\
+  Entry address(es): \n  IP address: 172.16.101.4\nPlatform: Cisco ,  Capabilities:\
+  \ Router Switch IGMP \nInterface: GigabitEthernet0/3,  Port ID (outgoing port):\
+  \ GigabitEthernet0/2\nHoldtime : 161 sec\n\nVersion :\nCisco IOS Software, vios_l2\
+  \ Software (vios_l2-ADVENTERPRISEK9-M), Version 15.2(4.0.55)E, TEST ENGINEERING\
+  \ ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP\nTechnical Support: http://www.cisco.com/techsupport\n\
+  Copyright (c) 1986-2015 by Cisco Systems, Inc.\nCompiled Tue 28-Jul-15 18:52 by\
+  \ sasyamal\n\nadvertisement version: 2\nVTP Management Domain: ''\nNative VLAN:\
+  \ 1\nDuplex: half\nManagement address(es): \n  IP address: 172.16.101.4\n\n-------------------------\n\
+  Device ID: usa1-rtr-1.home.com\nEntry address(es): \n  IP address: 172.16.101.100\n\
+  Platform: Cisco 7206VXR,  Capabilities: Router \nInterface: GigabitEthernet0/0,\
+  \  Port ID (outgoing port): Ethernet2/0\nHoldtime : 148 sec\n\nVersion :\nCisco\
+  \ IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)M11, RELEASE\
+  \ SOFTWARE (fc2)\nTechnical Support: http://www.cisco.com/techsupport\nCopyright\
+  \ (c) 1986-2016 by Cisco Systems, Inc.\nCompiled Sun 16-Oct-16 07:53 by prod_rel_team\n\
+  \nadvertisement version: 2\nDuplex: half\n\n\nTotal cdp entries displayed : 3\n\
+  usa1-core-01# "
+template: "Device ID: {{ device_id }}\n  IP address: {{ device_ip | default('no ip\
+  \ found') }}\nPlatform: {{ platform | ORPHRASE }} ,  Capabilities: {{ capabilities\
+  \ | ORPHRASE }} \nInterface: {{ local_interface }},  Port ID (outgoing port): {{\
+  \ remote_interface }}\n"
+variables:
+- end: 94
+  filters: []
+  functions: []
+  start: 73
+  var_name: device_id
+- end: 141
+  filters: []
+  functions:
+  - default('no ip found')
+  start: 129
+  var_name: device_ip
+- end: 157
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 152
+  var_name: platform
+- end: 193
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 175
+  var_name: capabilities
+- end: 224
+  filters: []
+  functions: []
+  start: 206
+  var_name: local_interface
+- end: 270
+  filters: []
+  functions: []
+  start: 252
+  var_name: remote_interface

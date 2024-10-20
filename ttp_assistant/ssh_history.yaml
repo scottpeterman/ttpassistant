@@ -1,0 +1,13 @@
+Host:
+- 172.16.101.2
+- 172.16.101.100
+- 172.16.101.1
+Prompt:
+- '#'
+Prompt Count:
+- '3'
+PySSHPass Commands:
+- term len 0,,show cdp nei det
+- term len 0,,show ver
+Username:
+- cisco

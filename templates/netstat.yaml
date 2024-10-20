@@ -1,0 +1,420 @@
+description: netstat -ln from ubuntu
+result:
+- - listening_port: '631'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '33125'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '33027'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '34269'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '35589'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '35639'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '35213'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '53'
+    listing_ip: 192.168.122.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '36761'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '3080'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5023'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5021'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5011'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5010'
+    listing_ip: 127.0.0.1
+    recv_q: '1'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5009'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5008'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5007'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5006'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5005'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5004'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5003'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5002'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5001'
+    listing_ip: 127.0.0.1
+    recv_q: '1'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5030'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5026'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5024'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '37063'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '37041'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '38587'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '54629'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5432'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '6379'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '39013'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '40823'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '53'
+    listing_ip: 127.0.0.53
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '42145'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '43895'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '44795'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '44793'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '902'
+    listing_ip: 0.0.0.0
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '44045'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '22'
+    listing_ip: 0.0.0.0
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '60451'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '389'
+    listing_ip: 0.0.0.0
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '8000'
+    listing_ip: 0.0.0.0
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '46845'
+    listing_ip: 127.0.0.1
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+  - listening_port: '5433'
+    listing_ip: 0.0.0.0
+    recv_q: '0'
+    remote_ip: 0.0.0.0
+    remote_port: '*'
+    send_q: '0'
+    state: LISTEN
+source_text: |-
+  speterman@ThinkStation:~$ netstat -ln
+  Active Internet connections (only servers)
+  Proto Recv-Q Send-Q Local Address           Foreign Address         State
+  tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:33125         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:33027         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:34269         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:35589         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:35639         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:35213         0.0.0.0:*               LISTEN
+  tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:36761         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:3080          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5023          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5021          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5011          0.0.0.0:*               LISTEN
+  tcp        1      0 127.0.0.1:5010          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5009          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5008          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5007          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5006          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5005          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5004          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5003          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5002          0.0.0.0:*               LISTEN
+  tcp        1      0 127.0.0.1:5001          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5030          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5026          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5024          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:37063         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:37041         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:38587         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:54629         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:39013         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:40823         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:42145         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:43895         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:44795         0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:44793         0.0.0.0:*               LISTEN
+  tcp        0      0 0.0.0.0:902             0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:44045         0.0.0.0:*               LISTEN
+  tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:60451         0.0.0.0:*               LISTEN
+  tcp        0      0 0.0.0.0:389             0.0.0.0:*               LISTEN
+  tcp        0      0 0.0.0.0:8000            0.0.0.0:*               LISTEN
+  tcp        0      0 127.0.0.1:46845         0.0.0.0:*               LISTEN
+  tcp        0      0 0.0.0.0:5433            0.0.0.0:*               LISTEN
+template: |
+  tcp        {{ recv_q }}      {{ send_q }} {{ listing_ip }}:{{ listening_port }}           {{ remote_ip }}:{{ remote_port }}               {{ state }}
+variables:
+- end: 167
+  filters: []
+  functions: []
+  start: 166
+  var_name: recv_q
+- end: 174
+  filters: []
+  functions: []
+  start: 173
+  var_name: send_q
+- end: 184
+  filters: []
+  functions: []
+  start: 175
+  var_name: listing_ip
+- end: 188
+  filters: []
+  functions: []
+  start: 185
+  var_name: listening_port
+- end: 206
+  filters: []
+  functions: []
+  start: 199
+  var_name: remote_ip
+- end: 208
+  filters: []
+  functions: []
+  start: 207
+  var_name: remote_port
+- end: 229
+  filters: []
+  functions: []
+  start: 223
+  var_name: state

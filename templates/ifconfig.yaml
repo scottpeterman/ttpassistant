@@ -1,0 +1,253 @@
+description: ifconfig from Ubuntu 22.04
+result:
+- - bcast: 172.18.255.255
+    info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: br-e170da3b5b1f
+    ip_address: 172.18.0.1
+    ipv6_address: fe80::42:5ff:febf:9858
+    mask: 255.255.0.0
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x20<link
+  - bcast: 172.17.255.255
+    info: flags=4099<UP,BROADCAST,MULTICAST>
+    interface: docker0
+    ip_address: 172.17.0.1
+    mask: 255.255.0.0
+    mtu: '1500'
+  - info: flags=4099<UP,BROADCAST,MULTICAST>
+    interface: eno2
+    mtu: '1500'
+  - info: flags=73<UP,LOOPBACK,RUNNING>
+    interface: lo
+    ipv6_address: ::1
+    mtu: '65536'
+    prefix_len: '128'
+    through_away: scopeid 0x10<host
+  - bcast: 172.16.1.255
+    info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: tap0
+    ip_address: 172.16.1.1
+    ipv6_address: fe80::1c0e:d7ff:fe86:d83e
+    mask: 255.255.255.0
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x20<link
+  - info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: veth254323a
+    ipv6_address: fe80::c89:44ff:fe21:2400
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x20<link
+  - info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: veth36ed5cc
+    ipv6_address: fe80::830:f6ff:fe93:8f5d
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x20<link
+  - info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: veth3993ccc
+    ipv6_address: fe80::8496:6bff:fe62:b0ad
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x20<link
+  - info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: veth44e7c8b
+    ipv6_address: fe80::7c0f:91ff:fe8b:134d
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x20<link
+  - info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: vetha89d237
+    ipv6_address: fe80::d4a0:a9ff:fe26:484e
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x20<link
+  - info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: vethf5dfdcf
+    ipv6_address: fe80::7814:80ff:fe9d:dc0d
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x20<link
+  - bcast: 192.168.122.255
+    info: flags=4099<UP,BROADCAST,MULTICAST>
+    interface: virbr0
+    ip_address: 192.168.122.1
+    mask: 255.255.255.0
+    mtu: '1500'
+  - bcast: 10.0.0.255
+    info: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    interface: wlo1
+    ip_address: 10.0.0.108
+    ipv6_address: 2601:283:4f82:1bc0:46f3:7c9e:8dff:9d6f
+    mask: 255.255.255.0
+    mtu: '1500'
+    prefix_len: '64'
+    through_away: scopeid 0x0<global
+source_text: |-
+  speterman@ThinkStation:~$ ifconfig
+  br-e170da3b5b1f: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet 172.18.0.1  netmask 255.255.0.0  broadcast 172.18.255.255
+          inet6 fe80::42:5ff:febf:9858  prefixlen 64  scopeid 0x20<link>
+          ether 02:42:05:bf:98:58  txqueuelen 0  (Ethernet)
+          RX packets 14444  bytes 18954340 (18.9 MB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 12833  bytes 7156360 (7.1 MB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+          inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+          ether 02:42:8b:38:be:6d  txqueuelen 0  (Ethernet)
+          RX packets 0  bytes 0 (0.0 B)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 0  bytes 0 (0.0 B)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  eno2: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+          ether 04:7c:16:97:34:b5  txqueuelen 1000  (Ethernet)
+          RX packets 0  bytes 0 (0.0 B)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 0  bytes 0 (0.0 B)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+          device interrupt 19  memory 0x84200000-84220000
+
+  lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+          inet 127.0.0.1  netmask 255.0.0.0
+          inet6 ::1  prefixlen 128  scopeid 0x10<host>
+          loop  txqueuelen 1000  (Local Loopback)
+          RX packets 73285157  bytes 8759238194 (8.7 GB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 73285157  bytes 8759238194 (8.7 GB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  tap0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet 172.16.1.1  netmask 255.255.255.0  broadcast 172.16.1.255
+          inet6 fe80::1c0e:d7ff:fe86:d83e  prefixlen 64  scopeid 0x20<link>
+          ether 1e:0e:d7:86:d8:3e  txqueuelen 1000  (Ethernet)
+          RX packets 940173  bytes 92059233 (92.0 MB)
+          RX errors 0  dropped 5591  overruns 0  frame 0
+          TX packets 96801  bytes 8151740 (8.1 MB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  veth254323a: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet6 fe80::c89:44ff:fe21:2400  prefixlen 64  scopeid 0x20<link>
+          ether 0e:89:44:21:24:00  txqueuelen 0  (Ethernet)
+          RX packets 102010  bytes 7235425 (7.2 MB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 199730  bytes 16491927 (16.4 MB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  veth36ed5cc: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet6 fe80::830:f6ff:fe93:8f5d  prefixlen 64  scopeid 0x20<link>
+          ether 0a:30:f6:93:8f:5d  txqueuelen 0  (Ethernet)
+          RX packets 358161  bytes 59450764 (59.4 MB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 198612  bytes 35032038 (35.0 MB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  veth3993ccc: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet6 fe80::8496:6bff:fe62:b0ad  prefixlen 64  scopeid 0x20<link>
+          ether 86:96:6b:62:b0:ad  txqueuelen 0  (Ethernet)
+          RX packets 2909076  bytes 235357201 (235.3 MB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 4345803  bytes 641934007 (641.9 MB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  veth44e7c8b: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet6 fe80::7c0f:91ff:fe8b:134d  prefixlen 64  scopeid 0x20<link>
+          ether 7e:0f:91:8b:13:4d  txqueuelen 0  (Ethernet)
+          RX packets 4344655  bytes 641822626 (641.8 MB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 2910235  bytes 235483342 (235.4 MB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  vetha89d237: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet6 fe80::d4a0:a9ff:fe26:484e  prefixlen 64  scopeid 0x20<link>
+          ether d6:a0:a9:26:48:4e  txqueuelen 0  (Ethernet)
+          RX packets 84747  bytes 22476260 (22.4 MB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 147919  bytes 25515441 (25.5 MB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  vethf5dfdcf: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet6 fe80::7814:80ff:fe9d:dc0d  prefixlen 64  scopeid 0x20<link>
+          ether 7a:14:80:9d:dc:0d  txqueuelen 0  (Ethernet)
+          RX packets 564  bytes 97617 (97.6 KB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 1635  bytes 612955 (612.9 KB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+          inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+          ether 52:54:00:35:7c:f6  txqueuelen 1000  (Ethernet)
+          RX packets 0  bytes 0 (0.0 B)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 0  bytes 0 (0.0 B)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet 10.0.0.108  netmask 255.255.255.0  broadcast 10.0.0.255
+          inet6 2601:283:4f82:1bc0:46f3:7c9e:8dff:9d6f  prefixlen 64  scopeid 0x0<global>
+          inet6 fe80::117e:3b1d:7b0e:2d14  prefixlen 64  scopeid 0x20<link>
+          inet6 2601:283:4f82:1bc0:7b9f:e4d0:4355:20c  prefixlen 64  scopeid 0x0<global>
+          inet6 2601:283:4f82:1bc0:a586:795f:7a03:996e  prefixlen 64  scopeid 0x0<global>
+          inet6 2601:283:4f82:1bc0::611a  prefixlen 128  scopeid 0x0<global>
+          ether 0c:91:92:d5:b2:90  txqueuelen 1000  (Ethernet)
+          RX packets 7063525  bytes 2976242693 (2.9 GB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 2492470  bytes 1417307981 (1.4 GB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+  speterman@ThinkStation:~$
+template: |
+  {{ interface }}: {{ info | ORPHRASE }}  mtu {{ mtu }}
+          inet {{ ip_address }}  netmask {{ mask }}  broadcast {{ bcast }}
+          inet6 {{ ipv6_address }}  prefixlen {{ prefix_len }}  {{ through_away | ORPHRASE }}>
+variables:
+- end: 5096
+  filters: []
+  functions: []
+  start: 5092
+  var_name: interface
+- end: 5140
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 5098
+  var_name: info
+- end: 5150
+  filters: []
+  functions: []
+  start: 5146
+  var_name: mtu
+- end: 5174
+  filters: []
+  functions: []
+  start: 5164
+  var_name: ip_address
+- end: 5197
+  filters: []
+  functions: []
+  start: 5184
+  var_name: mask
+- end: 5219
+  filters: []
+  functions: []
+  start: 5209
+  var_name: bcast
+- end: 5272
+  filters: []
+  functions: []
+  start: 5234
+  var_name: ipv6_address
+- end: 5286
+  filters: []
+  functions: []
+  start: 5284
+  var_name: prefix_len
+- end: 5306
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 5288
+  var_name: through_away

@@ -1,0 +1,191 @@
+description: for vios_l2
+result:
+- bandwidth: '1000000'
+  bia_mac: 0cab.0018.0001
+  collisions: '0'
+  crc: '0'
+  current_mac: 0c:ab:00:18:00:01
+  delay: '10'
+  description: No Description Configured
+  framing_errors: '0'
+  hardware: iGbE
+  ignored: '0'
+  input_pkts_sec: 0 packets/sec
+  input_rate: 0 bits/sec
+  input_sampling_rate: 5 minute
+  inpute_errors: '0'
+  interface_name: GigabitEthernet0/1
+  interface_resets: '2'
+  lp_state: up
+  mtu: '1500'
+  output_errors: '0'
+  output_pkts_sec: 0 packets/sec
+  output_rate: 0 bits/sec
+  output_sampling_rate: 5 minute
+  overruns: '0'
+  phy_state: up
+source_text: "usa1-core-01#show int g 0/1\nGigabitEthernet0/1 is up, line protocol\
+  \ is up (connected) \n  Hardware is iGbE, address is 0cab.0018.0001 (bia 0cab.0018.0001)\n\
+  \  Description: to switch2 e1(g0/1)\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY\
+  \ 10 usec, \n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation\
+  \ ARPA, loopback not set\n  Keepalive set (10 sec)\n  Unknown, Unknown, link type\
+  \ is auto, media type is unknown media type\n  output flow-control is unsupported,\
+  \ input flow-control is unsupported\n  Auto-duplex, Auto-speed, link type is auto,\
+  \ media type is unknown\n  input flow-control is off, output flow-control is unsupported\
+  \ \n  ARP type: ARPA, ARP Timeout 04:00:00\n  Last input 00:00:01, output 00:00:02,\
+  \ output hang never\n  Last clearing of \"show interface\" counters never\n  Input\
+  \ queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0\n  Queueing strategy:\
+  \ fifo\n  Output queue: 0/0 (size/max)\n  5 minute input rate 0 bits/sec, 0 packets/sec\n\
+  \  5 minute output rate 0 bits/sec, 0 packets/sec\n     1111314 packets input, 78239931\
+  \ bytes, 0 no buffer\n     Received 1100689 broadcasts (1100689 multicasts)\n  \
+  \   0 runts, 0 giants, 0 throttles \n     0 input errors, 0 CRC, 0 frame, 0 overrun,\
+  \ 0 ignored\n     0 watchdog, 1100689 multicast, 0 pause input\n     516778 packets\
+  \ output, 50339457 bytes, 0 underruns\n     0 output errors, 0 collisions, 2 interface\
+  \ resets\n     0 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n\
+  \     0 lost carrier, 0 no carrier, 0 pause output\n     0 output buffer failures,\
+  \ 0 output buffers swapped out\nusa1-core-01# "
+template: "{{ interface_name }} is {{ phy_state | contains_re('(?i)\\b(?:up|down)\\\
+  b') }}, line protocol is {{ lp_state | contains_re('(?i)\\b(?:up|down)\\b') }} (connected)\
+  \ \n  Hardware is {{ hardware | ORPHRASE }}, address is {{ current_mac | MAC | mac_eui()\
+  \ }} (bia {{ bia_mac | MAC }})\n  Description: {{ description | default('No Description\
+  \ Configured') }}\n  MTU {{ mtu }} bytes, BW {{ bandwidth }} Kbit/sec, DLY {{ delay\
+  \ }} usec, \n  {{ input_sampling_rate | ORPHRASE }} input rate {{ input_rate | ORPHRASE\
+  \ }}, {{ input_pkts_sec | ORPHRASE }}\n  {{ output_sampling_rate | ORPHRASE }} output\
+  \ rate {{ output_rate | ORPHRASE }}, {{ output_pkts_sec | ORPHRASE }}\n     {{ inpute_errors\
+  \ }} input errors, {{ crc }} CRC, {{ framing_errors }} frame, {{ overruns }} overrun,\
+  \ {{ ignored }} ignored\n     {{ output_errors }} output errors, {{ collisions }}\
+  \ collisions, {{ interface_resets }} interface resets\n"
+variables:
+- end: 46
+  filters: []
+  functions: []
+  start: 28
+  var_name: interface_name
+- end: 52
+  filters: []
+  functions:
+  - contains_re('(?i)\b(?:up|down)\b')
+  start: 50
+  var_name: phy_state
+- end: 73
+  filters: []
+  functions:
+  - contains_re('(?i)\b(?:up|down)\b')
+  start: 71
+  var_name: lp_state
+- end: 105
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 101
+  var_name: hardware
+- end: 132
+  filters:
+  - MAC
+  functions:
+  - mac_eui()
+  start: 118
+  var_name: current_mac
+- end: 152
+  filters:
+  - MAC
+  functions: []
+  start: 138
+  var_name: bia_mac
+- end: 188
+  filters: []
+  functions:
+  - default('No Description Configured')
+  start: 169
+  var_name: description
+- end: 199
+  filters: []
+  functions: []
+  start: 195
+  var_name: mtu
+- end: 217
+  filters: []
+  functions: []
+  start: 210
+  var_name: bandwidth
+- end: 234
+  filters: []
+  functions: []
+  start: 232
+  var_name: delay
+- end: 923
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 915
+  var_name: input_sampling_rate
+- end: 971
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 963
+  var_name: output_sampling_rate
+- end: 1163
+  filters: []
+  functions: []
+  start: 1162
+  var_name: inpute_errors
+- end: 1179
+  filters: []
+  functions: []
+  start: 1178
+  var_name: crc
+- end: 945
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 935
+  var_name: input_rate
+- end: 960
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 947
+  var_name: input_pkts_sec
+- end: 994
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 984
+  var_name: output_rate
+- end: 1009
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 996
+  var_name: output_pkts_sec
+- end: 1186
+  filters: []
+  functions: []
+  start: 1185
+  var_name: framing_errors
+- end: 1195
+  filters: []
+  functions: []
+  start: 1194
+  var_name: overruns
+- end: 1206
+  filters: []
+  functions: []
+  start: 1205
+  var_name: ignored
+- end: 1327
+  filters: []
+  functions: []
+  start: 1326
+  var_name: output_errors
+- end: 1344
+  filters: []
+  functions: []
+  start: 1343
+  var_name: collisions
+- end: 1358
+  filters: []
+  functions: []
+  start: 1357
+  var_name: interface_resets

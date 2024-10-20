@@ -1,0 +1,31 @@
+description: interface config parser
+result:
+- - description: Router-id-loopback
+    interface_name: Loopback0
+  - description: CPE_Acces_Vlan
+    interface_name: Vlan778
+source_text: |-
+  interface Loopback0
+   description Router-id-loopback
+   ip address 192.168.0.113/24
+  !
+  interface Vlan778
+   description CPE_Acces_Vlan
+   ip address 10.28.0.200/24
+   ip vrf DATA
+  !
+template: |
+  interface {{ interface_name }}
+   description {{ description | ORPHRASE }}
+variables:
+- end: 19
+  filters: []
+  functions: []
+  start: 10
+  var_name: interface_name
+- end: 51
+  filters:
+  - ORPHRASE
+  functions: []
+  start: 33
+  var_name: description
