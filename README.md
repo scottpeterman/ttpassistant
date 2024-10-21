@@ -45,6 +45,20 @@ Visual TTP Assistant addresses key challenges in network automation and manageme
 - **Save and Load Files**: The built-in file menu allows users to save and open scripts, making it easy to resume work later.
 - ![App Screenshot](https://github.com/scottpeterman/ttpassistant/raw/main/screenshots/gencode.png)
 
+## Installation
+
+### via PIP
+
+```
+pip install ttp_assistant
+```
+
+For instructions on how to install the Visual TTP Assistant from source, refer to the [INSTALL.md](./INSTALL.md) file.
+
+## Building the Wheel
+
+For detailed instructions on building the wheel file for distribution, refer to the [BUILD.md](./BUILD.md) file.
+
 ## Workflow
 
 ### Step 1: Input Network Data and Template
