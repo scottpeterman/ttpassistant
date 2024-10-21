@@ -1,0 +1,22 @@
+# Include README and requirements.txt
+include README.md
+include requirements.txt
+
+# Include all Python source files
+recursive-include ttp_assistant *.py
+
+# Include all static files (HTML, CSS, JS, images, etc.)
+recursive-include ttp_assistant/static *
+recursive-include ttp_assistant/icons *
+recursive-include ttp_assistant/ace *
+recursive-include ttp_assistant/dialogs/pyssh_log *
+
+# Include templates, if any (for example, HTML templates)
+recursive-include ttp_assistant *.html
+
+# Include any additional configuration or YAML files
+recursive-include ttp_assistant *.yaml
+
+# Ensure data files in Library and other folders are included
+recursive-include ttp_assistant/Library *
+recursive-include ttp_assistant/helpers *
